@@ -1,7 +1,6 @@
 package com.manuelperera.topmovies20.domain.usecases.movie
 
 import arrow.core.Either
-import com.manuelperera.topmovies20.domain.extensions.getNotNull
 import com.manuelperera.topmovies20.domain.extensions.subObs
 import com.manuelperera.topmovies20.domain.model.Config
 import com.manuelperera.topmovies20.domain.model.MovieList
@@ -27,11 +26,9 @@ class GetMovieListUseCase @Inject constructor(
             }.subObs()
 
     private fun addBaseUrlToImages(eConfig: Either<Status, Config>, eMovieList: Either<Status, MovieList>) {
-        eConfig.getNotNull { config ->
-            eMovieList.getNotNull { movieList ->
-                movieList.list.forEach { movieDetail ->
-                    movieDetail.posterPath = config.getChromePosterSizeUrl() + movieDetail.posterPath
-                }
+        if (eConfig is Either.Right && eMovieList is Either.Right) {
+            eMovieList.b.list.forEach {
+                it.posterPath = eConfig.b.getChromePosterSizeUrl() + it.posterPath
             }
         }
     }
