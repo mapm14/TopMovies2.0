@@ -1,4 +1,4 @@
-package com.manuelperera.topmovies20.infrastructure.di.fragment
+package com.manuelperera.topmovies20.infrastructure.di.module
 
 import dagger.Module
 

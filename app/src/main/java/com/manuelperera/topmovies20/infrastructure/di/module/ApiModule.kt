@@ -1,4 +1,4 @@
-package com.manuelperera.topmovies20.infrastructure.di.api
+package com.manuelperera.topmovies20.infrastructure.di.module
 
 import com.manuelperera.topmovies20.BuildConfig.BASE_URL
 import com.manuelperera.topmovies20.BuildConfig.DEBUG

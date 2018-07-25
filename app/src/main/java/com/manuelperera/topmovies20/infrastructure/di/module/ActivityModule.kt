@@ -1,4 +1,4 @@
-package com.manuelperera.topmovies20.infrastructure.di.activity
+package com.manuelperera.topmovies20.infrastructure.di.module
 
 import com.manuelperera.topmovies20.infrastructure.di.scope.ViewScope
 import com.manuelperera.topmovies20.presentation.main.MainActivity

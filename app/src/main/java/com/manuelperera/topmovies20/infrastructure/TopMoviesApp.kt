@@ -1,6 +1,6 @@
 package com.manuelperera.topmovies20.infrastructure
 
-import com.manuelperera.topmovies20.infrastructure.di.app.DaggerAppComponent
+import com.manuelperera.topmovies20.infrastructure.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
