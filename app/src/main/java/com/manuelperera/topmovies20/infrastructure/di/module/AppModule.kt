@@ -8,6 +8,5 @@ import dagger.android.support.AndroidSupportInjectionModule
     AndroidSupportInjectionModule::class,
     ActivityModule::class,
     FragmentModule::class,
-    RepositoryModule::class,
-    ApiModule::class])
+    RepositoryModule::class])
 class AppModule
