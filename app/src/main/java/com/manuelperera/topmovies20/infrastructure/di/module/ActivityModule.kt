@@ -5,6 +5,7 @@ import com.manuelperera.topmovies20.presentation.main.MainActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
+
 @Module
 abstract class ActivityModule {
 
