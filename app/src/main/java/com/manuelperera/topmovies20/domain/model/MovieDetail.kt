@@ -3,7 +3,7 @@ package com.manuelperera.topmovies20.domain.model
 import java.io.Serializable
 
 
-class MovieDetail(
+data class MovieDetail(
         val voteCount: Int,
         val id: Int,
         val video: Boolean,
