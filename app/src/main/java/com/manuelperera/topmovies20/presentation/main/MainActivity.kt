@@ -3,10 +3,10 @@ package com.manuelperera.topmovies20.presentation.main
 import android.os.Bundle
 import com.manuelperera.topmovies20.R
 import com.manuelperera.topmovies20.domain.extensions.hide
-import com.manuelperera.topmovies20.domain.extensions.loadImage
 import com.manuelperera.topmovies20.domain.extensions.show
 import com.manuelperera.topmovies20.domain.model.MovieDetail
 import com.manuelperera.topmovies20.presentation.base.BaseActivity
+import com.manuelperera.topmovies20.presentation.detail.DetailActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
@@ -27,11 +27,14 @@ class MainActivity : BaseActivity(), MainView {
         super.onDestroy()
     }
 
-    override fun showMovieInfo(movieDetail: MovieDetail) {
+    override fun showPage(list: List<MovieDetail>) {
         progressBar.hide()
-        contentGroup.show()
-        posterImgView.loadImage(movieDetail.posterPath)
-        titleTxtView.text = movieDetail.title
+        recyclerView.show()
+        recyclerView.adapter = MovieAdapter(list, ::goToMovieDetail)
+    }
+
+    private fun goToMovieDetail(movieDetail: MovieDetail) {
+        DetailActivity.goToDetailActivity(this, movieDetail)
     }
 
 }

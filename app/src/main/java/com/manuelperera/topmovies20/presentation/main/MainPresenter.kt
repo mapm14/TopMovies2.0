@@ -15,7 +15,7 @@ class MainPresenter @Inject constructor(private val getMovieListUseCase: GetMovi
     private fun getMovieList(page: Int) {
         addSubscription(getMovieListUseCase.bind(GetMovieListUseCase.Dto(page)).subscribe { eMovieList ->
             when (eMovieList) {
-                is Either.Right -> view?.showMovieInfo(eMovieList.b.list[0])
+                is Either.Right -> view?.showPage(eMovieList.b.list)
                 is Either.Left -> view?.showToast(eMovieList.a.info.message)
             }
         })

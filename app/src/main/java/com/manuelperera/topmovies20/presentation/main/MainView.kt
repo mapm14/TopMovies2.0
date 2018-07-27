@@ -6,6 +6,6 @@ import com.manuelperera.topmovies20.presentation.base.View
 
 interface MainView : View {
 
-    fun showMovieInfo(movieDetail: MovieDetail)
+    fun showPage(list: List<MovieDetail>)
 
 }
