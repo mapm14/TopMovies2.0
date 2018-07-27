@@ -58,4 +58,7 @@ dependencies {
 
     // Arrow
     implementation 'io.arrow-kt:arrow-core:0.7.2'
+
+    // Circular Image View
+    implementation 'com.mikhaellopez:circularimageview:3.2.0'
 }
