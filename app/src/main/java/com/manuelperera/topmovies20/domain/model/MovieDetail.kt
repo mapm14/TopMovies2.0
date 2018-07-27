@@ -1,5 +1,7 @@
 package com.manuelperera.topmovies20.domain.model
 
+import java.io.Serializable
+
 
 class MovieDetail(
         val voteCount: Int,
@@ -16,4 +18,4 @@ class MovieDetail(
         val adult: Boolean,
         val overview: String,
         val releaseDate: String
-)
+) : Serializable
