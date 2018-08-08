@@ -5,5 +5,5 @@ class MovieList(
         val page: Int,
         val totalResults: Int,
         val totalPages: Int,
-        val list: List<MovieDetail>
+        val list: MutableList<MovieDetail>
 )
