@@ -1,8 +1,12 @@
 package com.manuelperera.topmovies20.presentation.detail
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.view.ViewCompat
 import com.manuelperera.topmovies20.R
 import com.manuelperera.topmovies20.domain.extensions.getParamByClass
 import com.manuelperera.topmovies20.domain.extensions.hide
@@ -18,9 +22,16 @@ import javax.inject.Inject
 class DetailActivity : BaseActivity(), DetailView {
 
     companion object {
-        fun goToDetailActivity(context: Context, movieDetail: MovieDetail) {
-            val intent = Intent(context, DetailActivity::class.java).apply { setParamByClass(movieDetail) }
-            context.startActivity(intent)
+        fun goToDetailActivity(context: Context, movieDetail: MovieDetail, sharedImageView: ImageView) {
+            val intent = Intent(context, DetailActivity::class.java).apply {
+                setParamByClass(movieDetail)
+            }
+            val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    context as Activity,
+                    sharedImageView,
+                    ViewCompat.getTransitionName(sharedImageView) ?: ""
+            )
+            context.startActivity(intent, options.toBundle())
         }
     }
 
@@ -30,7 +41,9 @@ class DetailActivity : BaseActivity(), DetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+        supportPostponeEnterTransition()
         val movieDetail: MovieDetail = getParamByClass()
+        ViewCompat.setTransitionName(posterImgView, movieDetail.id.toString())
         presenter.init(this)
         showMovieInfo(movieDetail)
     }
@@ -43,7 +56,7 @@ class DetailActivity : BaseActivity(), DetailView {
     override fun showMovieInfo(movieDetail: MovieDetail) {
         progressBar.hide()
         contentGroup.show()
-        posterImgView.loadImage(movieDetail.posterPath)
+        posterImgView.loadImage(movieDetail.posterPath) { supportStartPostponedEnterTransition() }
         titleTxtView.text = movieDetail.title
     }
 
