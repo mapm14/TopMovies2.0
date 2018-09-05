@@ -10,14 +10,13 @@ import androidx.core.view.ViewCompat
 import com.manuelperera.topmovies20.R
 import com.manuelperera.topmovies20.domain.extensions.getParamByClass
 import com.manuelperera.topmovies20.domain.extensions.hide
-import com.manuelperera.topmovies20.domain.extensions.loadImage
+import com.manuelperera.topmovies20.domain.extensions.load
 import com.manuelperera.topmovies20.domain.extensions.setParamByClass
 import com.manuelperera.topmovies20.domain.extensions.show
 import com.manuelperera.topmovies20.domain.model.MovieDetail
 import com.manuelperera.topmovies20.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_detail.*
 import javax.inject.Inject
-
 
 class DetailActivity : BaseActivity(), DetailView {
 
@@ -56,7 +55,7 @@ class DetailActivity : BaseActivity(), DetailView {
     override fun showMovieInfo(movieDetail: MovieDetail) {
         progressBar.hide()
         contentGroup.show()
-        posterImgView.loadImage(movieDetail.posterPath) { supportStartPostponedEnterTransition() }
+        posterImgView.load(movieDetail.posterPath, onSuccess = { supportStartPostponedEnterTransition() })
         titleTxtView.text = movieDetail.title
     }
 

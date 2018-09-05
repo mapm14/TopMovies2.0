@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/retryButton"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:background="@drawable/rounded_button_gradient"
+        android:text="@string/retry"
+        android:textColor="@android:color/white" />
+
+</FrameLayout>

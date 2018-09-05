@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Top Movies 2.0</string>
+    <string name="retry">Retry</string>
 </resources>

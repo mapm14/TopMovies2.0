@@ -7,7 +7,6 @@ import com.manuelperera.topmovies20.domain.usecases.movie.GetMovieListUseCase.Pa
 import com.manuelperera.topmovies20.presentation.base.Presenter
 import javax.inject.Inject
 
-
 class MainPresenter @Inject constructor(private val getMovieListUseCase: GetMovieListUseCase) : Presenter<MainView>() {
 
     override fun init() {}
@@ -15,8 +14,8 @@ class MainPresenter @Inject constructor(private val getMovieListUseCase: GetMovi
     fun getMoviePage(page: Int) {
         addSubscription(getMovieListUseCase(Params(page)) { eMovieList ->
             when (eMovieList) {
-                is Right -> view?.showPage(eMovieList.b.list)
-                is Left -> view?.showToast(eMovieList.a.info.message)
+                is Right -> view?.onLoadPageSuccess(eMovieList.b.list.map { it.toMovieDetailUI() })
+                is Left -> view?.onLoadPageError(page == 1)
             }
         })
     }
