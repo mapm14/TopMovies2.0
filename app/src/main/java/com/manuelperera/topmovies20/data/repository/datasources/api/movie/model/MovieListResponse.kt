@@ -9,7 +9,7 @@ class MovieListResponse(
         @SerializedName("page") private val page: Int?,
         @SerializedName("total_results") private val totalResults: Int?,
         @SerializedName("total_pages") private val totalPages: Int?,
-        @SerializedName("results") private val list: List<MovieDetailResponse>?
+        @SerializedName("results") private val list: MutableList<MovieDetailResponse>?
 ) : ResponseObject<MovieList> {
 
     override fun toAppDomain(): MovieList =
@@ -17,7 +17,7 @@ class MovieListResponse(
                     page ?: 0,
                     totalResults ?: 0,
                     totalPages ?: 0,
-                    list?.map { it.toAppDomain() } ?: listOf()
+                    list?.map { it.toAppDomain() }?.toMutableList() ?: mutableListOf()
             )
 
 }
