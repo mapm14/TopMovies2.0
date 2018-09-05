@@ -2,6 +2,7 @@ package com.manuelperera.topmovies20.presentation.main
 
 import com.manuelperera.topmovies20.domain.model.MovieDetail
 import com.manuelperera.topmovies20.presentation.base.recyclers.PagingObject
+import com.manuelperera.topmovies20.presentation.base.recyclers.PagingObject.ItemViewType.ITEM
 import java.io.Serializable
 
 data class MovieDetailUI(
@@ -21,25 +22,7 @@ data class MovieDetailUI(
         val releaseDate: String
 ) : PagingObject, Serializable {
 
-    companion object {
-        fun getEmptyInstance(viewType: PagingObject.ItemViewType) = MovieDetailUI(
-                0,
-                0,
-                false,
-                0.0,
-                "",
-                0.0,
-                "",
-                "",
-                "",
-                emptyList(),
-                "",
-                false,
-                "",
-                "").apply { itemViewType = viewType }
-    }
-
-    override var itemViewType = PagingObject.ItemViewType.ITEM
+    override var itemViewType = ITEM
 
     fun toMovieDetail(): MovieDetail = MovieDetail(
             voteCount,

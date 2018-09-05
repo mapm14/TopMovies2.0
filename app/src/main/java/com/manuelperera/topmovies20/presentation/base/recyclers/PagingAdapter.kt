@@ -17,7 +17,6 @@ abstract class PagingAdapter<T : PagingObject>(
 
     protected abstract var onBindItem: (View, T) -> Unit
     protected abstract var itemLayout: Int
-    protected abstract fun getEmptyInstance(viewType: PagingObject.ItemViewType): PagingObject
 
     protected var itemFullLoadingLayout = R.layout.item_full_loading
     protected var itemSmallLoadingLayout = R.layout.item_small_loading
@@ -57,7 +56,7 @@ abstract class PagingAdapter<T : PagingObject>(
                     notifyItemRemoved(list.size)
                 }
 
-                val pagingObject = getEmptyInstance(type)
+                val pagingObject = PagingObjectImpl().apply { itemViewType = type }
                 list.add(pagingObject as T)
 
                 notifyItemInserted(list.indexOf(pagingObject))
